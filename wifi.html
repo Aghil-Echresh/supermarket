@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سوپرمارکت کمیل - اینترنت رایگان</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      direction: rtl;
+      text-align: center;
+    }
+
+    /* پس‌زمینه با عکس مغازه */
+    .bg {
+      min-height: 100vh;
+      background-image: url('/storage/emulated/0/wifiAD/image.jpeg'); /* ← اینجا اسم فایل عکس مغازه‌ات */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 16px;
+      padding: 24px 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 18px;
+    }
+
+    .welcome {
+      font-size: 15px;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 10px 0 8px;
+      color: #e53935;
+      display: inline-block;
+    }
+
+    .offers {
+      text-align: right;
+      font-size: 13px;
+      margin: 0 auto 18px;
+      max-width: 320px;
+      line-height: 1.8;
+    }
+
+    .offers li {
+      margin-bottom: 4px;
+    }
+
+    .btn-connect {
+      display: block;
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto 8px;
+      padding: 12px 0;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ff6f00, #ff9100);
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-connect:active {
+      transform: scale(0.98);
+    }
+
+    .footer {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="card">
+    <div class="logo">🛒 سوپرمارکت کمیل</div>
+    <div class="subtitle">اینترنت رایگان مخصوص مشتریان عزیز</div>
+
+    <div class="welcome">
+      خوش اومدی 🌟<br>
+      برای استفاده از اینترنت رایگان، فقط روی دکمه زیر بزن.
+    </div>
+
+    <span class="section-title">🔥 پیشنهادهای امروز</span>
+    <ul class="offers">
+      <li>نوشابه خانواده پپسی — ۲۹,۵۰۰ تومان</li>
+      <li>روغن سرخ‌کردنی اویلا — ۱۰٪ تخفیف</li>
+      <li>پودر لباسشویی تاژ — قیمت ویژه</li>
+    </ul>
+
+    <!-- این لینک رو بعداً با لینک اتصال مودم عوض کن -->
+    <a href="#" class="btn-connect">اتصال به اینترنت</a>
+
+    <div class="footer">
+      اهواز – کیفیت، قیمت مناسب، احترام به مشتری
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
