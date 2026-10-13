@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#143c30">
+<title>کاتالوگ قیمت دخانیات | سوپرمارکت کمیل</title>
+<style>
+:root{--green:#164c3a;--green2:#237858;--bg:#f4f6f4;--ink:#17241d;--muted:#718078;--line:#e3e9e5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
+.hero{padding:27px 18px 23px;background:linear-gradient(130deg,#102c24,#247653);color:#fff}
+.hero-in{max-width:1200px;margin:auto}.brand{font-size:12px;letter-spacing:.3px;color:#c7e6d5}.hero h1{margin:10px 0 7px;font-size:clamp(23px,4vw,34px)}.hero p{margin:0;color:#d9eae0;font-size:13px}
+.wrap{max-width:1200px;margin:auto;padding:18px}
+.toolbar{display:grid;grid-template-columns:minmax(180px,1fr) 190px auto;gap:10px;margin-bottom:15px}
+input,select,button{font:inherit;border-radius:12px;border:1px solid var(--line);padding:13px;background:white;color:var(--ink)}button{background:var(--green);color:white;border:0;cursor:pointer}
+.chips{display:flex;gap:8px;overflow:auto;padding:2px 0 14px}.chip{white-space:nowrap;border:1px solid var(--line);border-radius:30px;background:#fff;padding:8px 13px;font-size:12px;cursor:pointer}.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+.summary{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:4px 2px 14px;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:13px}
+.card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 15px #173c2910;min-width:0}
+.photo{height:154px;background:linear-gradient(145deg,#f8faf8,#edf2ee);display:flex;align-items:center;justify-content:center;padding:12px;position:relative}
+.photo img{max-width:100%;width:100%;height:100%;object-fit:contain}
+.placeholder{width:70px;height:106px;border:1px solid #ffffffb0;border-radius:5px;box-shadow:3px 6px 12px #0002;background:linear-gradient(145deg,var(--pack),#26372e);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;color:white;font-size:11px;font-weight:bold;line-height:1.6}
+.category{position:absolute;top:9px;right:9px;background:#ffffffed;border:1px solid #e8ede9;padding:5px 8px;border-radius:20px;font-size:10px;color:#46564d}
+.details{padding:12px}.name{font-size:13px;font-weight:bold;line-height:1.8;min-height:47px}.price-row{display:flex;justify-content:space-between;gap:5px;align-items:baseline;margin-top:8px}.price{font-size:20px;color:var(--green2);font-weight:bold}.unit{font-size:10px;color:var(--muted)}
+.notice{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px;color:var(--muted);font-size:11px;line-height:1.9}
+.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:22px}
+@media(max-width:650px){.wrap{padding:12px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:135px}.details{padding:10px}.price{font-size:18px}}
+@media print{body{background:white}.hero{background:white;color:#111;border-bottom:2px solid #222}.hero p,.brand{color:#333}.toolbar,.chips,footer{display:none}.grid{grid-template-columns:repeat(4,1fr);gap:7px}.card{box-shadow:none;break-inside:avoid}.photo{height:90px}.notice{font-size:10px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-in"><div class="brand">سوپرمارکت کمیل</div><h1>کاتالوگ قیمت دخانیات</h1><p>فهرست قیمت ثبت‌شده · ۱۴۰۵/۰۷/۲۱</p></div></header>
+<main class="wrap">
+<div class="toolbar"><input id="search" type="search" placeholder="جست‌وجوی نام محصول…"><select id="category"><option value="all">همه دسته‌ها</option><option value="cig">سیگار</option><option value="tobacco">تنباکو</option><option value="charcoal">زغال</option><option value="accessory">لوازم جانبی</option></select><button onclick="window.print()">چاپ / ذخیره PDF</button></div>
+<div class="chips" id="chips"><button class="chip active" data-cat="all">همه محصولات</button><button class="chip" data-cat="cig">سیگار</button><button class="chip" data-cat="tobacco">تنباکو</button><button class="chip" data-cat="charcoal">زغال</button><button class="chip" data-cat="accessory">لوازم جانبی</button></div>
+<div class="summary"><span id="count"></span><span>قیمت‌ها مطابق فهرست ورودی</span></div>
+<div class="grid" id="grid"></div><div class="empty" id="empty">محصولی پیدا نشد.</div>
+<div class="notice">یادداشت: عکس واقعی هر مدل باید دقیقاً با بسته‌بندی همان مدل تطبیق داده شود. برای محصولاتی که تصویر اختصاصیِ قابل‌تأیید در دسترس نیست، کارت با تصویر جایگزین نمایش داده می‌شود. قیمت‌های چندمدلی یا بازه‌ای بدون تغییر نگه داشته شده‌اند.</div>
+</main><footer>سوپرمارکت کمیل · فهرست داخلی قیمت</footer>
+<script>
+const products=[
+["وینستون الترا تک","۱۴۳۰","cig"],["وینستون جور","۱۴۹۰","cig"],["وینستون اسلیم لایت","۱۶۲۰","cig"],["وینستون اسلیم الترا","۱۶۹۰","cig"],["وینست کامپک الترا","۱۲۶۰","cig"],["وینستون کامپک لایت","۱۳۵۰","cig"],["وینستون نانو","۱۴۲۰","cig"],["وینستون نوا لایت","۱۱۸۰","cig"],["وینستون نوا الترا","۱۲۵۰","cig"],["وینستون نوا سفید","۱۵۰۰","cig"],["وینستون عقابی","۱۴۳۰","cig"],["وینستون استایل الترا","۱۴۷۵","cig"],["وینستون استایل لایت","۱۵۲۵","cig"],
+["مگنا الترا","۷۷۰","cig"],["مگنا لایت","۱۲۸۰","cig"],["مگنا قرمز","۱۲۸۰","cig"],["جی وان مشکی","۷۷۰","cig"],["جی وان کامپک الترا","۷۰۰","cig"],["جیوان کامپک لایت","۷۵۰","cig"],["جی وان قوطی طوسی","۶۵۰","cig"],["جی وان قوطی آبی","۷۵۰","cig"],["کمل طوسی","۶۹۰","cig"],["کمل آبی","۸۰۰","cig"],["کمل سفید","۱۲۷۰","cig"],["کمل کامپکت الترا","۹۸۰","cig"],["کمل کامپکت لایت","۱۱۰۰","cig"],["کمل سنسو","۸۰۰","cig"],
+["کنت قرمز","۱۱۰۰","cig"],["کنت سیلور","۱۱۵۰","cig"],["کنت پاور ۸","۱۳۵۰","cig"],["کنت میکس","۱۷۰۰","cig"],["کنت آروما","۲۱۰۰","cig"],["کنت اچ دی","۱۳۵۰","cig"],["کنت نانو کلیک","۹۵۰","cig"],["کنت نانو ۴،۱","۱۱۰۰ ـ ۱۱۵۰","cig"],["کنت کریستال","۱۱۵۰","cig"],["کنت ویوا۶","۱۱۰۰","cig"],["کنت ویوا۴","۱۱۵۰","cig"],
+["مونتانا طلا","۸۰۰","cig"],["مونتانا دمی","۸۱۵","cig"],["بلیک (همه)","۶۵۰","cig"],["بهمن کوچک","۱۲۵۰","cig"],["بهمن الترا قدیم و جدید","۸۵۰ ـ ۶۵۰","cig"],["بهمن لایت قدیم و جدید","۸۵۰ ـ ۶۵۰","cig"],["بهمن کتابی قرمز و آبی","۹۰۰ ـ ۷۶۰","cig"],["بهمن بلند","۵۸۰","cig"],["بهمن سویس","۶۲۰","cig"],["بهمن هارد قوطی","۶۳۰","cig"],["زیکا قرمز","۴۵۰","cig"],["زیکا سفید","۴۹۰","cig"],["بیستون سفید کلفت","۷۵۰","cig"],["بیستون قرمز کلفت","۷۷۰","cig"],["بیستون‌های باریک","۶۲۰","cig"],["اسکار نقره","۱۰۵۰","cig"],["اسکار مشکی","۱۱۰۰","cig"],["موند مشکی، سفید","۶۸۰","cig"],["موند تاچ آبی نقره","۶۷۰","cig"],["موند تاچ مشکی","۶۹۰","cig"],["اونیکس باریک (طلا)","۶۲۰","cig"],["اونیکس باریک (نقره)","۶۹۰","cig"],["انیکس کامپک","۶۵۰","cig"],["انیکس قوطی نقره","۷۰۰","cig"],["کاوالو مگنت","۶۵۰","cig"],["کاوالو نکسوز","۶۵۰","cig"],["کاوالو مشکی","۷۸۵","cig"],["کاوالو سفید","۸۳۰","cig"],["کاوالو کلیپ","۱۲۸۰","cig"],["کاوالو پلی","۹۵۰","cig"],["کاوالو نعنا","۱۰۵۰","cig"],["کاوالو هندوانه","۱۳۵۰","cig"],["کاوالو سینک","۱۵۰۰","cig"],["کاوالو انبه","۱۲۰۰","cig"],["ماتادور","۶۵۰","cig"],["تی۴","۸۰۰","cig"],
+["تنباکو آلمانی آس پلاس","۸۰۰","tobacco"],["لاو الرییس","۹۹۵","tobacco"],["شب‌های مسکو الرییس","۹۹۵","tobacco"],["دوسیب الشرق","۲۱۵","tobacco"],["آدامس دارچین الشرق","۲۱۵","tobacco"],["آدامس دارچین رییس","۹۹۵","tobacco"],["تنباکو قوطی ۲۵۰g ـ تمام طعم‌ها","۴۰۰","tobacco"],["تنباکو الفاخر: هندوانه، هندوانه نعنا، پرتقال، پرتقال نعنا، پرتقال خامه و انگور نعنا","۹۹۵","tobacco"],
+["ذغال چینی پاریس","۱۵۰۰","charcoal"],["ذغال چینی بالار","۱۸۰۰","charcoal"],["ذغال نارگیل کارتن","۳۰۰۰","charcoal"],["گاز فندک","۱۲۰","accessory"],["فندک شفاف خارجی","۲۴","accessory"]
+];
+const meta={cig:{label:"سیگار",color:"#315d91"},tobacco:{label:"تنباکو",color:"#487a50"},charcoal:{label:"زغال",color:"#424744"},accessory:{label:"لوازم جانبی",color:"#a66b2e"}};
+const realImages={
+"وینستون جور":"https://napoli-pizza.ch/wp-content/uploads/2017/04/WINSTON-CLASSIC-RED-20s-PACKET1.jpg",
+"وینستون نوا سفید":"https://img-cdn.heureka.group/v1/eaf0f696-9f1e-400e-afe1-bdf22127c60f.jpg?height=400&width=400"
+};
+const grid=document.getElementById("grid"),search=document.getElementById("search"),category=document.getElementById("category");
+function render(){
+ const q=search.value.trim().toLocaleLowerCase("fa");
+ const cat=category.value;
+ const list=products.filter(p=>(cat==="all"||p[2]===cat)&&p[0].toLocaleLowerCase("fa").includes(q));
+ grid.innerHTML=list.map(p=>{
+  const m=meta[p[2]],src=realImages[p[0]]||"";
+  const pic=src?'<img src="'+src+'" alt="'+p[0]+'" loading="lazy" onerror="this.remove()">':"";
+  const fallback='<div class="placeholder" style="--pack:'+m.color+'">'+m.label+'</div>';
+  return '<article class="card"><div class="photo">'+pic+fallback+'<span class="category">'+m.label+'</span></div><div class="details"><div class="name">'+p[0]+'</div><div class="price-row"><span class="price">'+p[1]+'</span><span class="unit">قیمت</span></div></div></article>';
+ }).join("");
+ document.getElementById("count").textContent="نمایش "+list.length.toLocaleString("fa-IR")+" محصول از "+products.length.toLocaleString("fa-IR");
+ document.getElementById("empty").style.display=list.length?"none":"block";
+ document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b.dataset.cat===cat));
+}
+search.addEventListener("input",render);category.addEventListener("change",render);
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{category.value=b.dataset.cat;render()}));
+render();
+</script>
+</body></html>
